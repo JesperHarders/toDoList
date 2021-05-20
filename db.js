@@ -1,52 +1,19 @@
-let ulToDo = document.querySelector('#to_Do_List');
-let inputToDo = document.querySelector('#input_Item');
-let inputButton = document.querySelector('#add_To_Do_Button');
+window.indexedDB = window.indexedDB || window.mozIndexedDB || window.webkitIndexedDB || window.msIndexedDB;
+window.IDBTransaction = window.IDBTransaction || window.webkitIDBTransaction || window.msIDBTransaction || {READ_WRITE: "readwrite"};
+window.IDBKeyRange = window.IDBKeyRange || window.webkitIDBKeyRange || window.msIDBKeyRange;
 
-inputButton.addEventListener("click", addToDo);
-ulToDo.addEventListener("click", deleteCheck);
+if (!window.indexedDB) {
+  console.log("Your browser doesn't support a stable version of IndexedDB. Such and such feature will not be available.");
+};
 
-function addToDo(event) {
-    event.preventDefault();
+let request = window.indexedDB.open("todo", 3);
+let db;
 
-    let todoDiv = document.createElement('div');
-    todoDiv.classList.add('to_do_item');
+request.onerror = function(event) {
+  console.log("Error loading database");
+};
 
-    let newItem = document.createElement('li');
-    newItem.innerText = inputToDo.value;
-    todoDiv.appendChild(newItem);
-    if(inputToDo.value === ""){
-        return null;
-    }
+request.onsuccess = function(event) {
+  db = event.target.result;
+};
 
-    let completedBotton = document.createElement('button');
-    completedBotton.innerHTML = '<i class="fas fa-check"></i>';
-    completedBotton.classList.add('complete_btn');
-    todoDiv.appendChild(completedBotton);
-
-    let deleteButton = document.createElement('button');
-    deleteButton.innerHTML = '<i class="fas fa-trash"></i>';
-    deleteButton.classList.add('delete_btn');
-    todoDiv.appendChild(deleteButton);
-
-    ulToDo.appendChild(todoDiv);
-
-    inputToDo.value = "";
-}
-
-function deleteCheck(e) {
-    let item = e.target;
-
-    if(item.classList[0] === "delete_btn") {
-        let todo = item.parentElement; 
-
-        todo.classList.add("fall");
-        todo.addEventListener('transitionend', function(){
-            todo.remove();
-        })
-    }
-
-    if(item.classList[0] === "complete_btn") {
-        let todo = item.parentElement;
-        todo.classList.toggle("completedItem");
-    }
-}

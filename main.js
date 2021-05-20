@@ -1,8 +1,6 @@
 let ulToDo = document.querySelector('#to_Do_List');
 let inputToDo = document.querySelector('#input_Item');
 let inputButton = document.querySelector('#add_To_Do_Button');
-let db;
-let newItem = [{taskTitel: ""}];
 
 inputButton.addEventListener("click", addToDo);
 ulToDo.addEventListener("click", deleteCheck);
@@ -10,16 +8,14 @@ ulToDo.addEventListener("click", deleteCheck);
 function addToDo(event) {
     event.preventDefault();
 
-    let todoDiv = document.createElement('div');
+    let todoDiv = document.createElement('li');
     todoDiv.classList.add('to_do_item');
+    todoDiv.innerText = inputToDo.value;
 
-    let newItem = document.createElement('li');
-    newItem.innerText = inputToDo.value;
-    todoDiv.appendChild(newItem);
     if(inputToDo.value === ""){
         return null;
     }
-
+    
     let completedBotton = document.createElement('button');
     completedBotton.innerHTML = '<i class="fas fa-check"></i>';
     completedBotton.classList.add('complete_btn');
@@ -37,18 +33,23 @@ function addToDo(event) {
 
 function deleteCheck(e) {
     let item = e.target;
-
+    
     if(item.classList[0] === "delete_btn") {
         let todo = item.parentElement; 
-
+        
         todo.classList.add("fall");
         todo.addEventListener('transitionend', function(){
             todo.remove();
         })
     }
-
+    
     if(item.classList[0] === "complete_btn") {
         let todo = item.parentElement;
         todo.classList.toggle("completedItem");
     }
 }
+
+let smiley = document.createElement('img');
+smiley.src = "./120px-Shuffle260.png";
+let source = document.querySelector('#smiley');
+source.appendChild(smiley);
