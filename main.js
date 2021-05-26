@@ -12,6 +12,10 @@ function addToDo(event) {
     todoDiv.classList.add('to_do_item');
     todoDiv.innerText = inputToDo.value;
 
+    // value = document.querySelector('#counter')
+    // counter.html(++value);
+    // console.log(value);
+
     if(inputToDo.value === ""){
         return null;
     }
@@ -49,7 +53,9 @@ function deleteCheck(e) {
     }
 }
 
-let smiley = document.createElement('img');
-smiley.src = "./120px-Shuffle260.png";
-let source = document.querySelector('#smiley');
-source.appendChild(smiley);
+
+
+// let smiley = document.createElement('img');
+// smiley.src = "./Smiley.png";
+// let source = document.querySelector('#smiley');
+// source.appendChild(smiley);

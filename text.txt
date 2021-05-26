@@ -8,3 +8,4 @@ https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API/Using_IndexedDB
 
 https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API/Basic_Concepts_Behind_IndexedDB
 
+https://stackoverflow.com/questions/35260463/add-array-of-elements-to-dom

@@ -104,7 +104,7 @@ body {
         width: 50%;
     }
 
-    .smiley {
+    .smiley, .counter {
         display: none;
     }
 }
