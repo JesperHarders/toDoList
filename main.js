@@ -11,11 +11,7 @@ function addToDo(event) {
     let todoDiv = document.createElement('li');
     todoDiv.classList.add('to_do_item');
     todoDiv.innerText = inputToDo.value;
-
-    // value = document.querySelector('#counter')
-    // counter.html(++value);
-    // console.log(value);
-
+    
     if(inputToDo.value === ""){
         return null;
     }
@@ -24,16 +20,31 @@ function addToDo(event) {
     completedBotton.innerHTML = '<i class="fas fa-check"></i>';
     completedBotton.classList.add('complete_btn');
     todoDiv.appendChild(completedBotton);
-
+    
     let deleteButton = document.createElement('button');
     deleteButton.innerHTML = '<i class="fas fa-trash"></i>';
     deleteButton.classList.add('delete_btn');
     todoDiv.appendChild(deleteButton);
-
+    
     ulToDo.appendChild(todoDiv);
-
+    
     inputToDo.value = "";
 }
+
+let add = document.querySelector('#add_To_Do_Button');
+let decrease = document.querySelector('.delete_btn');
+let int = document.querySelector('#counter');
+let integer = 0;
+
+add.addEventListener('click', function(){
+    integer += 1;
+    int.innerHTML = integer; 
+})
+
+decrease.addEventListener('click', function(){
+    integer -= 1;
+    int.innerHTML = integer; 
+})
 
 function deleteCheck(e) {
     let item = e.target;
@@ -52,8 +63,6 @@ function deleteCheck(e) {
         todo.classList.toggle("completedItem");
     }
 }
-
-
 
 // let smiley = document.createElement('img');
 // smiley.src = "./Smiley.png";
