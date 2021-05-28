@@ -41,11 +41,6 @@ add.addEventListener('click', function(){
     int.innerHTML = integer; 
 })
 
-decrease.addEventListener('click', function(){
-    integer -= 1;
-    int.innerHTML = integer; 
-})
-
 function deleteCheck(e) {
     let item = e.target;
     
@@ -64,7 +59,3 @@ function deleteCheck(e) {
     }
 }
 
-// let smiley = document.createElement('img');
-// smiley.src = "./Smiley.png";
-// let source = document.querySelector('#smiley');
-// source.appendChild(smiley);
